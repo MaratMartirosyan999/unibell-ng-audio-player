@@ -1,0 +1,9 @@
+.row-hover:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+app-music-player{
+  display: block;
+  margin-top: 20px;
+}

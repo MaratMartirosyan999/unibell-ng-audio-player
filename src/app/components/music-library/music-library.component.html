@@ -1,0 +1,30 @@
+<header>
+  <mat-toolbar color="primary">
+    Music Player
+  </mat-toolbar>
+</header>
+<table mat-table matSort [dataSource]="musicList">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+    <td mat-cell *matCellDef="let music; let i = index;">{{ music.id }} </td>
+  </ng-container>
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Track Title</th>
+    <td mat-cell *matCellDef="let music">{{ music.title }}</td>
+  </ng-container>
+  <ng-container matColumnDef="fileName">
+    <th mat-header-cell *matHeaderCellDef  mat-sort-header>File Name</th>
+    <td mat-cell *matCellDef="let music">{{ music.fileName }}</td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; let i = index; columns: displayedColumns" (click)="onRowClick(i)"
+      class="row-hover">
+  </tr>
+</table>
+<app-music-player
+  (prevClicked)="onPrevClick()"
+  (nextClicked)="onNextClick()"
+  [isNextDisabled]="isNextDisabled"
+  [isPrevDisabled]="isPrevDisabled"
+  [music]="selectedMusic">
+</app-music-player>
